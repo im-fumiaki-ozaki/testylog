@@ -50,7 +50,7 @@ resource "aws_db_subnet_group" "mysql_standalone_subnetgroup" {
 # ---------------------------------------------
 resource "aws_db_instance" "mysql_standalone" {
   engine         = "mysql"
-  engine_version = "8.0.28"
+  engine_version = "8.0"
 
   identifier = "im-ozaki-${var.project}-${var.environment}-mysql-standalone"
 
