@@ -2,7 +2,7 @@
 # Elastic Container Service - Cluster
 # ---------------------------------------------
 resource "aws_ecs_cluster" "webapp" {
-  name = "${var.project}-${var.environment}-webapp-cluster"
+  name = "im-ozaki-${var.project}-${var.environment}-webapp-cluster"
 
   setting {
     name  = "containerInsights"
@@ -10,7 +10,7 @@ resource "aws_ecs_cluster" "webapp" {
   }
 
   tags = {
-    Name    = "${var.project}-${var.environment}-webapp-cluster"
+    Name    = "im-ozaki-${var.project}-${var.environment}-webapp-cluster"
     Project = var.project
     Env     = var.environment
   }
@@ -20,7 +20,7 @@ resource "aws_ecs_cluster" "webapp" {
 # Elastic Container Service - Service
 # ---------------------------------------------
 resource "aws_ecs_service" "webapp" {
-  name = "${var.project}-${var.environment}-webapp-service"
+  name = "im-ozaki-${var.project}-${var.environment}-webapp-service"
 
   launch_type     = "FARGATE"
   cluster         = aws_ecs_cluster.webapp.id
@@ -54,7 +54,7 @@ resource "aws_ecs_service" "webapp" {
 # Elastic Container Service - Task
 # ---------------------------------------------
 resource "aws_ecs_task_definition" "webapp" {
-  family = "${var.project}-${var.environment}-webapp-template"
+  family = "im-ozaki-${var.project}-${var.environment}-webapp-template"
 
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
@@ -118,7 +118,7 @@ resource "aws_ecs_task_definition" "webapp" {
   # }
 
   tags = {
-    Name    = "${var.project}-${var.environment}-webapp-template"
+    Name    = "im-ozaki-${var.project}-${var.environment}-webapp-template"
     Project = var.project
     Env     = var.environment
   }

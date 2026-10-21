@@ -9,7 +9,7 @@ resource "aws_vpc" "vpc" {
   assign_generated_ipv6_cidr_block = false
 
   tags = {
-    Name    = "${var.project}-${var.environment}-vpc"
+    Name    = "im-ozaki-${var.project}-${var.environment}-vpc"
     Project = var.project
     Env     = var.environment
   }
@@ -25,7 +25,7 @@ resource "aws_subnet" "public_subnet_1a" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name    = "${var.project}-${var.environment}-public-subnet-1a"
+    Name    = "im-ozaki-${var.project}-${var.environment}-public-subnet-1a"
     Project = var.project
     Env     = var.environment
     Type    = "public"
@@ -39,7 +39,7 @@ resource "aws_subnet" "public_subnet_1c" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name    = "${var.project}-${var.environment}-public-subnet-1c"
+    Name    = "im-ozaki-${var.project}-${var.environment}-public-subnet-1c"
     Project = var.project
     Env     = var.environment
     Type    = "public"
@@ -53,7 +53,7 @@ resource "aws_subnet" "private_subnet_1a" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name    = "${var.project}-${var.environment}-private-subnet-1a"
+    Name    = "im-ozaki-${var.project}-${var.environment}-private-subnet-1a"
     Project = var.project
     Env     = var.environment
     Type    = "private"
@@ -67,7 +67,7 @@ resource "aws_subnet" "private_subnet_1c" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name    = "${var.project}-${var.environment}-private-subnet-1c"
+    Name    = "im-ozaki-${var.project}-${var.environment}-private-subnet-1c"
     Project = var.project
     Env     = var.environment
     Type    = "private"
@@ -82,7 +82,7 @@ resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name    = "${var.project}-${var.environment}-public-rt"
+    Name    = "im-ozaki-${var.project}-${var.environment}-public-rt"
     Project = var.project
     Env     = var.environment
     Type    = "public"
@@ -105,7 +105,7 @@ resource "aws_route_table" "private_rt" {
   route = []
 
   tags = {
-    Name    = "${var.project}-${var.environment}-private-rt"
+    Name    = "im-ozaki-${var.project}-${var.environment}-private-rt"
     Project = var.project
     Env     = var.environment
     Type    = "private"
@@ -130,7 +130,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name    = "${var.project}-${var.environment}-igw"
+    Name    = "im-ozaki-${var.project}-${var.environment}-igw"
     Project = var.project
     Env     = var.environment
   }

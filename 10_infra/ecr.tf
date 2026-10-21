@@ -2,7 +2,7 @@
 # Elastic Container Registry
 # ---------------------------------------------
 resource "aws_ecr_repository" "webapp" {
-  name                 = "${var.project}-webapp"
+  name                 = "im-ozaki-${var.project}-webapp"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
@@ -10,7 +10,7 @@ resource "aws_ecr_repository" "webapp" {
   }
 
   tags = {
-    Name    = "${var.project}-webapp"
+    Name    = "im-ozaki-${var.project}-webapp"
     Project = var.project
   }
 

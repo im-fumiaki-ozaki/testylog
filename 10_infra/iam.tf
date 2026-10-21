@@ -10,11 +10,11 @@ resource "aws_iam_instance_profile" "app_ec2_profile" {
 }
 
 resource "aws_iam_role" "app_iam_role" {
-  name               = "${var.project}-${var.environment}-app-iam-role"
+  name               = "im-ozaki-${var.project}-${var.environment}-app-iam-role"
   assume_role_policy = data.aws_iam_policy_document.ec2_assume_role.json
 
   tags = {
-    Name    = "${var.project}-${var.environment}-app-iam-role"
+    Name    = "im-ozaki-${var.project}-${var.environment}-app-iam-role"
     Project = var.project
     Env     = var.environment
   }
@@ -55,11 +55,11 @@ resource "aws_iam_role_policy_attachment" "app_iam_role_s3_readonly" {
 # ecs-task-exec-iam-role
 # ---------------------------------------------
 resource "aws_iam_role" "ecs_task_exec_iam_role" {
-  name               = "${var.project}-${var.environment}-ecs-task-exec-iam-role"
+  name               = "im-ozaki-${var.project}-${var.environment}-ecs-task-exec-iam-role"
   assume_role_policy = data.aws_iam_policy_document.ecs_task_exec_assume_role.json
 
   tags = {
-    Name    = "${var.project}-${var.environment}-ecs-task-exec-iam-role"
+    Name    = "im-ozaki-${var.project}-${var.environment}-ecs-task-exec-iam-role"
     Project = var.project
     Env     = var.environment
   }

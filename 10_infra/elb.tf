@@ -2,7 +2,7 @@
 # Application Load Balancer
 # ---------------------------------------------
 resource "aws_lb" "front" {
-  name               = "${var.project}-${var.environment}-front-alb"
+  name               = "im-ozaki-${var.project}-${var.environment}-front-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups = [
@@ -41,7 +41,7 @@ resource "aws_lb_listener" "front_http" {
 # Target Group
 # ---------------------------------------------
 resource "aws_lb_target_group" "webapp_blue" {
-  name        = "${var.project}-${var.environment}-webapp-blue-tg"
+  name        = "ozaki-${var.project}-${var.environment}-webapp-blue"
   vpc_id      = aws_vpc.vpc.id
   protocol    = "HTTP"
   port        = 3000
@@ -53,14 +53,14 @@ resource "aws_lb_target_group" "webapp_blue" {
   }
 
   tags = {
-    Name    = "${var.project}-${var.environment}-webapp-tg"
+    Name    = "ozaki-${var.project}-${var.environment}-webapp-tg"
     Project = var.project
     Env     = var.environment
   }
 }
 
 resource "aws_lb_target_group" "webapp_green" {
-  name        = "${var.project}-${var.environment}-webapp-green-tg"
+  name        = "ozaki-${var.project}-${var.environment}-webapp-green"
   vpc_id      = aws_vpc.vpc.id
   protocol    = "HTTP"
   port        = 3000
@@ -72,7 +72,7 @@ resource "aws_lb_target_group" "webapp_green" {
   }
 
   tags = {
-    Name    = "${var.project}-${var.environment}-webapp-green-tg"
+    Name    = "ozaki-${var.project}-${var.environment}-webapp-green"
     Project = var.project
     Env     = var.environment
   }

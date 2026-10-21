@@ -2,7 +2,7 @@
 # RDS parameter group
 # ---------------------------------------------
 resource "aws_db_parameter_group" "mysql_standalone_parametergroup" {
-  name   = "${var.project}-${var.environment}-mysql-standalone-parametergroup"
+  name   = "im-ozaki-${var.project}-${var.environment}-mysql-standalone-parametergroup"
   family = "mysql8.0"
 
   parameter {
@@ -21,7 +21,7 @@ resource "aws_db_parameter_group" "mysql_standalone_parametergroup" {
 # RDS option group
 # ---------------------------------------------
 resource "aws_db_option_group" "mysql_standalone_optiongroup" {
-  name                 = "${var.project}-${var.environment}-mysql-standalone-optiongroup"
+  name                 = "im-ozaki-${var.project}-${var.environment}-mysql-standalone-optiongroup"
   engine_name          = "mysql"
   major_engine_version = "8.0"
 }
@@ -31,14 +31,14 @@ resource "aws_db_option_group" "mysql_standalone_optiongroup" {
 # RDS subnet group
 # ---------------------------------------------
 resource "aws_db_subnet_group" "mysql_standalone_subnetgroup" {
-  name = "${var.project}-${var.environment}-mysql-standalone-subnetgroup"
+  name = "im-ozaki-${var.project}-${var.environment}-mysql-standalone-subnetgroup"
   subnet_ids = [
     aws_subnet.private_subnet_1a.id,
     aws_subnet.private_subnet_1c.id
   ]
 
   tags = {
-    Name    = "${var.project}-${var.environment}-mysql-standalone-subnetgroup"
+    Name    = "im-ozaki-${var.project}-${var.environment}-mysql-standalone-subnetgroup"
     Project = var.project
     Env     = var.environment
   }
@@ -52,7 +52,7 @@ resource "aws_db_instance" "mysql_standalone" {
   engine         = "mysql"
   engine_version = "8.0.28"
 
-  identifier = "${var.project}-${var.environment}-mysql-standalone"
+  identifier = "im-ozaki-${var.project}-${var.environment}-mysql-standalone"
 
   username = var.username
   password = var.password
@@ -62,7 +62,7 @@ resource "aws_db_instance" "mysql_standalone" {
   allocated_storage     = 20
   max_allocated_storage = 50
   storage_type          = "gp2"
-  storage_encrypted     = false
+  storage_encrypted     = true
 
   multi_az = false
 
@@ -86,7 +86,7 @@ resource "aws_db_instance" "mysql_standalone" {
   apply_immediately = true
 
   tags = {
-    Name    = "${var.project}-${var.environment}-mysql-standalone"
+    Name    = "im-ozaki-${var.project}-${var.environment}-mysql-standalone"
     Project = var.project
     Env     = var.environment
   }
